@@ -2,21 +2,27 @@ package de.application.demo;
 
 
 import de.application.translator.Translator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope(BeanDefinition.SCOPE_SINGLETON)
+@Lazy
 public class Demo {
 
-    private  Translator translator;
 
-    public Translator getTranslator() {
-        return translator;
-    }
 
-    public void setTranslator(Translator translator) {
+    private  final Translator translator;
+
+
+
+    // @Autowired
+    public Demo(@Qualifier("upper") Translator translator) { // 1.)
         this.translator = translator;
-    }
-
-    public Demo() { // 1.)
-
         System.out.println("Ctor Demo");
 
 

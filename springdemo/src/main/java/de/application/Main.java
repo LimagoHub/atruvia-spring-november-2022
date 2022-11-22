@@ -9,6 +9,8 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
+@ComponentScan(basePackages = "de")
+
 public class Main {
 
 	/**
@@ -18,7 +20,10 @@ public class Main {
 	public static void main(String[] args) {
 
 
-		final AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+		final AbstractApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
+
+		//final AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+
 		context.registerShutdownHook();
 
 

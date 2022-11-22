@@ -16,7 +16,7 @@ Inversion of Control (Dependency Injection)
 		
 	@PreDestroy nur bei Singleton sinnvoll, weil Protoype nicht verwaltet wird
 	
-@Autowired
+@Autowired / @Value
 	Standard by Type
 	Im Konfliktfall by Name
 	

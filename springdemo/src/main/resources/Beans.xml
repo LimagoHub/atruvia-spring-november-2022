@@ -10,23 +10,23 @@
     default-init-method="init"
        default-autowire="byType"
 >
+    <context:annotation-config/>
+    <context:component-scan base-package="de"/>
 
-    <bean
-            id="demo"
-            class="de.application.demo.Demo"
-            scope="singleton"
-            lazy-init="false"
 
-            destroy-method="rip">
+    <!--
+    <bean id="impl" class ="de.math.CalculatorImpl"/>
 
-        <property name="translator" ref="lower" />
-
+    <bean id="logger" class ="de.math.CalculatorLogger">
+        <constructor-arg ref="impl" />
     </bean>
 
-    <bean id="lower" class="de.application.translator.ToLowerTranslator"/>
-    <bean id="upper" class="de.application.translator.ToUpperTranslator"/>
+    <bean id="secure" class ="de.math.CalculatorSecure">
+        <constructor-arg ref="logger" />
+    </bean>
 
-
-
-
+    <bean id="client" class ="de.client.CalcClient" init-method="go">
+        <constructor-arg ref="secure" />
+    </bean>
+-->
 </beans>
