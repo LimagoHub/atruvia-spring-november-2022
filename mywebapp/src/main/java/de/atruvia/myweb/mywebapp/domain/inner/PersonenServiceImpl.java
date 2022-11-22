@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,8 @@ public class PersonenServiceImpl implements PersonService {
 
     private final PersonRepository repo;
     private final PersonMapper mapper;
+
+    private final List<String> antipathen;
 
     /*
             person null -> PSE
@@ -44,7 +47,7 @@ public class PersonenServiceImpl implements PersonService {
             if(person.getNachname() == null || person.getNachname().length() < 2)
                 throw new PersonenServiceException("namename zu kurz.");
 
-            if("Attila".equals(person.getVorname()))
+            if(antipathen.contains(person.getVorname()))
                 throw new PersonenServiceException("Antipath");
 
             boolean exists = repo.existsById(person.getId());
